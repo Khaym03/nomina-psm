@@ -13,10 +13,16 @@ class VentanaRegistro(tk.Toplevel):
         super().__init__(master)
 
         self.title("Registrar Empleado")
+        self.posicionar_ventana()
+
+        self.encabezado = tk.Label(
+            self, text="Formulario de Registro", font=("Arial", 16)
+        )
+        self.encabezado.pack(pady=10)
 
         # Campos de texto
         self.campo_nombre = CampoTexto(self, "Nombre:")
-        self.campo_nombre.pack(fill=tk.X)
+        self.campo_nombre.pack(fill=tk.X, pady=(10, 0))
 
         self.campo_apellido = CampoTexto(self, "Apellido:")
         self.campo_apellido.pack(fill=tk.X)
@@ -24,21 +30,20 @@ class VentanaRegistro(tk.Toplevel):
         self.campo_ci = CampoTexto(self, "CI:")
         self.campo_ci.pack(fill=tk.X, padx=33)
 
-        # Radio buttons para cargo
+        # Opciones para cargo
         opciones_cargo = self.cargos
         self.campo_cargo = CampoRadio(self, "Cargo:", opciones_cargo)
-        self.campo_cargo.pack()
+        self.campo_cargo.pack(padx=10, pady=(20, 0))
 
-        # Radio buttons para nivel de instrucción
+        # Opciones para nivel de instrucción
         opciones_nivel = self.nivelesDeInstruccion
         self.campo_nivel = CampoRadio(self, "Nivel de Instrucción:", opciones_nivel)
-        self.campo_nivel.pack()
+        self.campo_nivel.pack(padx=10, pady=(20, 0))
 
         btn_guardar = tk.Button(self, text="Guardar", command=self.guardar_empleado)
         btn_guardar.pack(pady=10)
 
     def guardar_empleado(self):
-
         nombre = self.campo_nombre.obtener_valor()
         apellido = self.campo_apellido.obtener_valor()
         ci = self.campo_ci.obtener_valor()
@@ -52,7 +57,6 @@ class VentanaRegistro(tk.Toplevel):
 
         messagebox.showinfo("Éxito", "Empleado registrado con éxito.")
 
-        # Limpiar campos después de guardar
         for campo in (
             self.campo_nombre,
             self.campo_apellido,
@@ -61,3 +65,13 @@ class VentanaRegistro(tk.Toplevel):
             self.campo_nivel,
         ):
             campo.limpiar()
+
+    def posicionar_ventana(self):
+        width = 450
+        height = 400
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
+        x = int(screen_width * 0.8) - (width)
+        y = int(screen_height // 2) - (height // 2)
+
+        self.geometry(f"{width}x{height}+{x}+{y}")

@@ -1,6 +1,7 @@
 from typing import List
 from .empleado import Empleado
 
+
 class SistemaEmpleados:
     def __init__(self):
         self.empleados: List[Empleado] = []

@@ -32,7 +32,7 @@ class Empleado:
         return self.salarioBasePorHora * horasTrabajadas * bonoCargo * bonoNivel
 
     def bonoPorNivelDeInstruccion(self) -> float:
-        return self.bonosPorNivelDeInstruccion.get(self.nivelDeInstruccion, 1)
+        return self.bonosPorNivelDeInstruccion.get(self.nivelDeInstruccion.lower(), 1)
 
     def bonoPorCargo(self) -> float:
-        return self.bonosPorCargo.get(self.cargo, 1)
+        return self.bonosPorCargo.get(self.cargo.lower(), 1)
