@@ -1,2 +1,5 @@
+from app import Aplicacion
+
 if __name__ == '__main__':
-    print('Hello World')
+    app = Aplicacion()
+    app.mainloop()
