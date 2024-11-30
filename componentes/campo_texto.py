@@ -12,3 +12,6 @@ class CampoTexto(ttk.Frame):
 
     def obtener_valor(self):
         return self.entrada.get()
+    
+    def limpiar(self):
+        self.entrada.delete(0, tk.END)

@@ -14,3 +14,6 @@ class CampoRadio(ttk.Frame):
 
     def obtener_valor(self):
         return self.variable.get()
+    
+    def limpiar(self):
+        self.variable.set("")
