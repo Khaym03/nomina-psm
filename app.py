@@ -71,11 +71,11 @@ class Aplicacion(tk.Tk):
         messagebox.showerror("No encontrado", "Empleado no encontrado.")
 
     def posicionar_ventana(self):
-        width = 400
-        height = 400
-        screen_width = self.winfo_screenwidth()
-        screen_height = self.winfo_screenheight()
-        x = int(screen_width * 0.5) - (width)
-        y = int(screen_height // 2) - (height // 2)
+        ancho = 400
+        alto = 400
+        ancho_ventana = self.winfo_screenwidth()
+        alto_ventana = self.winfo_screenheight()
+        x = int(ancho_ventana * 0.5) - (ancho)
+        y = int(alto_ventana // 2) - (alto // 2)
 
-        self.geometry(f"{width}x{height}+{x}+{y}")
+        self.geometry(f"{ancho}x{alto}+{x}+{y}")

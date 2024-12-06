@@ -50,6 +50,10 @@ class VentanaRegistro(tk.Toplevel):
         cargo = self.campo_cargo.obtener_valor()
         nivel_de_instruccion = self.campo_nivel.obtener_valor()
 
+        if not self.formulario_valido():
+            messagebox.showerror("Error", "Todos los campos son obligatorios.")
+            return
+
         nuevo_empleado = Empleado(nombre, apellido, ci, cargo, nivel_de_instruccion)
 
         # Agregar empleado al sistema
@@ -67,11 +71,20 @@ class VentanaRegistro(tk.Toplevel):
             campo.limpiar()
 
     def posicionar_ventana(self):
-        width = 450
-        height = 400
+        ancho = 450
+        alto = 400
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
-        x = int(screen_width * 0.8) - (width)
-        y = int(screen_height // 2) - (height // 2)
+        x = int(screen_width * 0.8) - (ancho)
+        y = int(screen_height // 2) - (alto // 2)
 
-        self.geometry(f"{width}x{height}+{x}+{y}")
+        self.geometry(f"{ancho}x{alto}+{x}+{y}")
+
+    def formulario_valido(self):
+        return (
+            self.campo_nombre.obtener_valor()
+            and self.campo_apellido.obtener_valor()
+            and self.campo_ci.obtener_valor()
+            and self.campo_cargo.obtener_valor()
+            and self.campo_nivel.obtener_valor()
+        )
